@@ -1,17 +1,18 @@
 version: '3.0'
-  orders: #container_name
-    image: order1
-    ports:
-    - "8084:4000"
-    networks: # connect my orders container to the network i created
-      - my_network
-    environment:
-      WORKERS_API: "workers:80"
-  workers:
-    image: worker1
-    ports:
-    - "8082:80"
-    networks:
-      - my_network
+  services:
+    orders: #container_name
+      image: order1
+      ports:
+      - "8084:4000"
+      networks: # connect my orders container to the network i created
+        - my_network
+      environment:
+        WORKERS_API: "workers:80"
+    workers:
+      image: worker1
+      ports:
+      - "8082:80"
+      networks:
+        - my_network
 networks:
   my_network:
