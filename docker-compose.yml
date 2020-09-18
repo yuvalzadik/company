@@ -14,5 +14,5 @@ version: '3.0'
       - "8082:80"
       networks:
         - my_network
-networks:
-  my_network:
+  networks:
+    my_network:
