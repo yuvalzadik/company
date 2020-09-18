@@ -85,8 +85,5 @@ def get_order (id):
     return jsonify(response)
 
 
-
-
-
 if __name__ == "__main__":
     api_v1.run(debug=True, port=4000, host="0.0.0.0")
