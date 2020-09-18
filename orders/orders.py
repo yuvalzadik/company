@@ -34,7 +34,6 @@ orders = [
 def get_orders ():
     return jsonify(orders)
 
-yuvi = 1
 
 @api_v1.route('/orders', methods = ['POST'])
 def add_order ():
