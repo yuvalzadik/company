@@ -1,4 +1,6 @@
 node(){
+    sh "ls"
+
     stage("Build"){
         sh """
         cd workers
