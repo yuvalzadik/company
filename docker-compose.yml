@@ -1,7 +1,7 @@
 version: '3.0'
 services:
   orders: #container_name
-    image: order1
+    build: ./orders/
     ports:
       - "8084:4000"
     networks: # connect my orders container to the network i created
@@ -9,7 +9,7 @@ services:
     environment:
       WORKERS_API: "workers:80"
   workers:
-    image: worker1
+    build: ./workers/
     ports:
       - "8082:80"
     networks:
