@@ -3,7 +3,7 @@ services:
   orders: #container_name
     image: 208996231/company:orders
     ports:
-      - "8084:4000"
+      - "9094:4000"
     networks: # connect my orders container to the network i created
       - my_network
     environment:
@@ -11,7 +11,7 @@ services:
   workers:
     image: 208996231/company:workers
     ports:
-      - "8082:80"
+      - "9092:80"
     networks:
       - my_network
 networks:
