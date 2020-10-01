@@ -1,5 +1,6 @@
 node(){
-    sh "cd company"
+    checkout scm
+    sh "ls"
 
     stage("Build"){
         sh """
