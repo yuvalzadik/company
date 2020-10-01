@@ -1,38 +1,41 @@
 node(){
     checkout scm
-    dockerhub_creds = credentials('dockerhub')
+withCredentials([string(credentialsId: 'dockerhub', variable: 'PASS')]) {
+
+
 
     stage("Build"){
        build()
     }
 
     stage("Test"){
-        sh """
-        docker login --username 208996231 --password  Huck1212!
-        docker pull 208996231/company:orders
-        docker pull 208996231/company:workers
+            sh """
+            docker login --username 208996231 --password  ${PASS}
+            docker pull 208996231/company:orders
+            docker pull 208996231/company:workers
 
-        docker-compose up -d
+            docker-compose up -d
 
-        cd tests
-        pip3 install requests
+            cd tests
+            pip3 install requests
 
-        test=\$(python3 workerstest.py http://localhost:9092)
+            test=\$(python3 workerstest.py http://localhost:9092)
 
-        if [ \$test = "True" ]; then
-            echo "Success"
-            docker-compose down
-        else
-            echo "Failed!!"
-            docker-compose down
-            exit 1
-        fi
-        """
+            if [ \$test = "True" ]; then
+                echo "Success"
+                docker-compose down
+            else
+                echo "Failed!!"
+                docker-compose down
+                exit 1
+            fi
+            """
     }
 
     stage("Deploy"){
         echo "This is the deployment!!!"
     }
+}
 
 }
 
