@@ -1,5 +1,5 @@
 node(){
-    sh "ls"
+    sh "cd company"
 
     stage("Build"){
         sh """
