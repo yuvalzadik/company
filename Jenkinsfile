@@ -8,7 +8,7 @@ node(){
 
     stage("Test"){
         sh """
-        docker login --username 208996231 --password ${dockerhub_creds}
+        docker login --username 208996231 --password  Huck1212!
         docker pull 208996231/company:orders
         docker pull 208996231/company:workers
 
@@ -49,7 +49,7 @@ def build(){
     cd orders
     docker build -t 208996231/company:orders .
 
-    docker login --username 208996231 --password ${dockerhub_creds}
+    docker login --username 208996231 --password Huck1212!
 
     docker push 208996231/company:workers
     docker push 208996231/company:orders
