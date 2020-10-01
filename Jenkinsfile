@@ -1,21 +1,8 @@
 node(){
     checkout scm
-    sh "ls"
 
     stage("Build"){
-        sh """
-        cd workers
-        docker build -t 208996231/company:workers .
-
-        cd ..
-        cd orders
-        docker build -t 208996231/company:orders .
-
-        docker login --username 208996231 --password Huck1212!
-
-        docker push 208996231/company:workers
-        docker push 208996231/company:orders
-        """
+       build()
     }
 
     stage("Test"){
@@ -46,4 +33,24 @@ node(){
         echo "This is the deployment!!!"
     }
 
+}
+
+
+
+
+
+def build(){
+    sh """
+    cd workers
+    docker build -t 208996231/company:workers .
+
+    cd ..
+    cd orders
+    docker build -t 208996231/company:orders .
+
+    docker login --username 208996231 --password Huck1212!
+
+    docker push 208996231/company:workers
+    docker push 208996231/company:orders
+    """
 }
