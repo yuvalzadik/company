@@ -52,7 +52,7 @@ def build(){
     cd orders
     docker build -t 208996231/company:orders .
 
-    docker login --username 208996231 --password Huck1212!
+    docker login --username 208996231 --password ${PASS}
 
     docker push 208996231/company:workers
     docker push 208996231/company:orders
